@@ -5,34 +5,44 @@ const stopwatch = document.createElement('div');
 stopwatch.id = 'stopwatch';
 document.body.insertBefore(stopwatch, wordContainer);
 
-// 영어 단어와 한글 뜻의 매핑 목록을 20개로 정의합니다.
+// 영어 단어와 한글 뜻의 매핑 목록을 30개로 정의합니다.
 const wordList = [
-    { english: 'apple', korean: '사과' },
-    { english: 'banana', korean: '바나나' },
-    { english: 'cherry', korean: '체리' },
-    { english: 'date', korean: '대추' },
-    { english: 'elderberry', korean: '엘더베리' },
-    { english: 'fig', korean: '무화과' },
-    { english: 'grape', korean: '포도' },
-    { english: 'honeydew', korean: '허니듀' },
-    { english: 'kiwi', korean: '키위' },
-    { english: 'lemon', korean: '레몬' },
-    { english: 'mango', korean: '망고' },
-    { english: 'nectarine', korean: '천도복숭아' },
-    { english: 'orange', korean: '오렌지' },
-    { english: 'papaya', korean: '파파야' },
-    { english: 'quince', korean: '모과' },
-    { english: 'raspberry', korean: '산딸기' },
-    { english: 'strawberry', korean: '딸기' },
-    { english: 'tangerine', korean: '귤' },
-    { english: 'ugli fruit', korean: '우글리프루트' },
-    { english: 'watermelon', korean: '수박' }
+    { english: 'wander', korean: '어슬렁거리다, 헤매다' },
+    { english: 'wonder', korean: '궁금하다; 놀라움' },
+    { english: 'heredity', korean: '유전 (형질)' },
+    { english: 'heritage', korean: '유산' },
+    { english: 'imitate', korean: '모방하다, 흉내 내다' },
+    { english: 'initiate', korean: '시작하다, 창시하다' },
+    { english: 'vacation', korean: '휴가' },
+    { english: 'vocation', korean: '천직, 직업, 사명감' },
+    { english: 'bald', korean: '벗어진, 대머리의' },
+    { english: 'bold', korean: '대담한, 용감한' },
+    { english: 'through', korean: '~을 통하여, ~을 지나서' },
+    { english: 'thorough', korean: '철저한, 빈틈없는' },
+    { english: 'marvel', korean: '놀라다; 놀라운 사람[물건]' },
+    { english: 'marble', korean: '대리석; 구슬' },
+    { english: 'assume', korean: '가정하다; 떠맡다' },
+    { english: 'consume', korean: '소비하다, 다 써버리다' },
+    { english: 'award', korean: '상, 상품; 수여하다' },
+    { english: 'reward', korean: '보상; 보답하다' },
+    { english: 'eliminate', korean: '제거하다, 삭제하다' },
+    { english: 'illuminate', korean: '조명하다, 밝게 하다' },
+    { english: 'statue', korean: '상, 조각상' },
+    { english: 'status', korean: '지위, 신분' },
+    { english: 'uninterested', korean: '무관심한, 관심 없는' },
+    { english: 'disinterested', korean: '이해관계가 없는, 중립적인' },
+    { english: 'affect', korean: '~에 영향을 미치다' },
+    { english: 'effect', korean: '효력, 효과; ~을 초래하다' },
+    { english: 'likewise', korean: '마찬가지로' },
+    { english: 'otherwise', korean: '만약 그렇지 않으면' },
+    { english: 'expire', korean: '만기가 되다, 만료되다' },
+    { english: 'inspire', korean: '격려하다; 불어넣다, 영감을 주다' }
 ];
 
 let currentWord = {};
 let cardCount = 4; // 초기 카드 개수
 let rounds = 0; // 진행된 라운드 수
-const maxRounds = 5; // 최대 라운드 수
+const maxRounds = 20; // 최대 라운드 수
 let timerInterval; // 스톱워치 인터벌
 let totalTime = 0; // 총 경과 시간 (초 단위)
 
