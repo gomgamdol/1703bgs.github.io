@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Matching Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #wordContainer {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        #gameContainer {
+            display: grid;
+            gap: 10px;
+        }
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 50px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover {
+            background-color: #e0e0e0;
+        }
+        #message {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Matching Game</h1>
+    <div id="wordContainer"></div>
+    <div id="gameContainer"></div>
+    <p id="message"></p>
+    <button onclick="startGame()">New Game</button>
+
+    <script src="game.js"></script>
+</body>
+</html>
