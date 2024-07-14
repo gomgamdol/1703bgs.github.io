@@ -45,6 +45,7 @@ let rounds = 0; // 진행된 라운드 수
 const maxRounds = 20; // 최대 라운드 수
 let timerInterval; // 스톱워치 인터벌
 let totalTime = 0; // 총 경과 시간 (초 단위)
+let WrongAnswer = 0; // 틀린 답 입력 횟수
 
 function startGame() {
     if (rounds >= maxRounds) {
@@ -83,6 +84,7 @@ function startGame() {
     startStopwatch();
 }
 
+// 답 판별
 function checkGuess(word) {
     if (word === currentWord.english) {
         message.innerText = '정답입니다!';
@@ -91,13 +93,15 @@ function checkGuess(word) {
         setTimeout(startGame, 0); // 0초 후 새로운 게임 시작
     } else {
         message.innerText = '오답입니다. 패널티 +5초!';
+        WrongAnswer++; // 틀린 횟수에 1회 추가
         totalTime += 5; // 틀릴 때마다 5초 증가
     }
 }
 
+// 게임 끝, 결과 화면
 function endGame() {
     clearInterval(timerInterval);
-    message.innerText = `Game over! You completed ${maxRounds} rounds in ${totalTime} seconds.`;
+    message.innerText = `Game over!  ${totalTime} 초 걸렸습니다!`+'\n'+`틀린 횟수 : ${WrongAnswer} `;
     wordContainer.innerText = '';
     gameContainer.innerHTML = '';
     const restartButton = document.createElement('button');
@@ -106,15 +110,18 @@ function endGame() {
     document.body.appendChild(restartButton);
 }
 
+// 게임 재시작
 function restartGame() {
     cardCount = 4; // 카드 개수 초기화
     rounds = 0; // 라운드 수 초기화
     totalTime = 0; // 총 시간 초기화
+    WrongAnswer = 0; // 틀린 답변 초기화
     message.innerText = '';
     document.querySelector('button').remove(); // 재시작 버튼 제거
     startGame();
 }
 
+// 초시계
 function startStopwatch() {
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
@@ -123,6 +130,7 @@ function startStopwatch() {
     }, 1000);
 }
 
+// 카드 크기 자동 조절
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
