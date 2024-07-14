@@ -46,6 +46,7 @@ const maxRounds = 20; // 최대 라운드 수
 let timerInterval; // 스톱워치 인터벌
 let totalTime = 0; // 총 경과 시간 (초 단위)
 let WrongAnswer = 0; // 틀린 답 입력 횟수
+let LeftRound = 20; // 남은 라운드 수
 
 function startGame() {
     if (rounds >= maxRounds) {
@@ -89,7 +90,8 @@ function checkGuess(word) {
     if (word === currentWord.english) {
         message.innerText = '정답입니다!';
         cardCount++; // 정답을 맞출 때마다 카드 개수 증가
-        rounds++; // 라운드 수 증가
+        rounds++; // 라운드 수 증가(변수)
+        LeftRound--; // 남은 라운드 수 감소(시각적)
         setTimeout(startGame, 0); // 0초 후 새로운 게임 시작
     } else {
         message.innerText = '오답입니다. 패널티 +5초!';
@@ -116,6 +118,7 @@ function restartGame() {
     rounds = 0; // 라운드 수 초기화
     totalTime = 0; // 총 시간 초기화
     WrongAnswer = 0; // 틀린 답변 초기화
+    LeftRound = 20; // 남은 라운드 수 초기화
     message.innerText = '';
     document.querySelector('button').remove(); // 재시작 버튼 제거
     startGame();
@@ -126,7 +129,7 @@ function startStopwatch() {
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
         totalTime++;
-        stopwatch.innerText = `Time: ${totalTime} seconds`;
+        stopwatch.innerText = `${totalTime} 초`+'\n'+`남은 라운드 수 : ${LeftRound}`;
     }, 1000);
 }
 
