@@ -39,6 +39,7 @@ const wordList = [
     { english: 'inspire', korean: '격려하다; 불어넣다, 영감을 주다' }
 ];
 
+// 변수 선언
 let currentWord = {};
 let cardCount = 4; // 초기 카드 개수
 let rounds = 0; // 진행된 라운드 수
@@ -48,6 +49,7 @@ let totalTime = 0; // 총 경과 시간 (초 단위)
 let WrongAnswer = 0; // 틀린 답 입력 횟수
 let LeftRound = 20; // 남은 라운드 수
 
+// 게임 시작
 function startGame() {
     if (rounds >= maxRounds) {
         endGame();
@@ -133,7 +135,7 @@ function startStopwatch() {
     }, 1000);
 }
 
-// 카드 크기 자동 조절
+// 중복 단어 셔플
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
